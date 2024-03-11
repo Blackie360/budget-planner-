@@ -2,8 +2,8 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import bg from './../../assets/budget.png';
 import Colors from '../../utils/Colors';
-import { client } from '../../utils/KindeConfig';
-import services from '../../utils/services';
+import services from './../../utils/services'
+import { client } from './../../utils/KindeConfig';
 import { useRouter } from 'expo-router';
 
 export default function LoginScreen() {
