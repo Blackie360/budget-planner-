@@ -13,7 +13,7 @@ export default function Home() {
 
   const checkUserAuth=async ()=>{
     const result = await  services.getData("login");
-    console.log("result",result);
+    
     if(result !== 'true')
     {
       router.replace('/login');
