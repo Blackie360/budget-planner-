@@ -2,8 +2,24 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import bg from './../../assets/budget.png';
 import Colors from '../../utils/Colors';
+import { client } from '../../utils/KindeConfig';
+import services from '../../utils/services';
+import { useRouter } from 'expo-router';
 
 export default function LoginScreen() {
+
+    const router=useRouter();
+
+    const handleSignIn = async () => {
+        const token = await client.login();
+        if (token) {
+          // User was authenticated
+          await services.storeData("login", "true");
+          router.replace('/');
+
+        }
+      };
+
   return (
     <View style={{
         display: 'flex',
@@ -33,7 +49,7 @@ export default function LoginScreen() {
   Take Control of Your Finances
 </Text>
                 <TouchableOpacity style={styles.button}
-                onPress={()=>console.log("btn click")}>
+                onPress={handleSignIn}>
                     <Text style={{
                         textAlign: 'center',
                         color: Colors.PRIMARY,
